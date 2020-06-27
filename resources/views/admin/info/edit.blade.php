@@ -1,0 +1,20 @@
+@extends('admin.default')
+
+@section('page-header')
+	Info <small>{{ trans('app.update_item') }}</small>
+@stop
+
+@section('content')
+	{!! Form::model($item, [
+			'action' => ['Admin\InfoController@update', $item->id],
+			'method' => 'put',
+		])
+	!!}
+
+		@include('admin.info.form')
+
+		<button type="submit" class="btn btn-primary">{{ trans('app.edit_button') }}</button>
+
+	{!! Form::close() !!}
+
+@stop
