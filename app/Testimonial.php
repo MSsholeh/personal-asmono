@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Portfolio extends Model
+class Testimonial extends Model
 {
-    protected $table = "portfolio";
+    protected $table = "testimonial";
 
     protected $fillable = [
-        'id','title','link','image','description','type','status','created_at','updated_at'
+        'id','name','position','image','description','created_at','updated_at'
     ];
 
     public static function rules($update = false, $id = null)

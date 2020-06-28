@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             users::class,
             GeneralSettingTableSeeder::class,
-            CompanyProfileTableSeeder::class,
         ]);
     }
 }

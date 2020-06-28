@@ -15,15 +15,98 @@
     <!-- Styles -->
 	<link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
+    <style>
+        .funkyradio div {
+          clear: both;
+          overflow: hidden;
+        }
 
-    <!-- include summernote css/js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+        .funkyradio label {
+          width: 100%;
+          border-radius: 3px;
+          border: 1px solid #D1D3D4;
+          font-weight: normal;
+        }
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/imgareaselect-default.css') }}" />
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.imgareaselect.js') }}"></script>
+        .funkyradio input[type="radio"]:empty,
+        .funkyradio input[type="checkbox"]:empty {
+          display: none;
+        }
+
+        .funkyradio input[type="radio"]:empty ~ label,
+        .funkyradio input[type="checkbox"]:empty ~ label {
+          position: relative;
+          line-height: 2.5em;
+          text-indent: 3.25em;
+          margin-top: 0.5em;
+          cursor: pointer;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+        }
+
+        .funkyradio input[type="radio"]:empty ~ label:before,
+        .funkyradio input[type="checkbox"]:empty ~ label:before {
+          position: absolute;
+          display: block;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          content: '';
+          width: 2.5em;
+          background: #D1D3D4;
+          border-radius: 3px 0 0 3px;
+        }
+
+        .funkyradio-success input[type="radio"]:checked ~ label:before,
+        .funkyradio-success input[type="checkbox"]:checked ~ label:before {
+          color: #fff;
+          background-color: #5cb85c;
+        }
+
+        .funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+        .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+          color: #888;
+        }
+
+        .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+        .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+          content: '\2714';
+          text-indent: .9em;
+          color: #C2C2C2;
+        }
+
+        .funkyradio input[type="radio"]:checked ~ label,
+        .funkyradio input[type="checkbox"]:checked ~ label {
+          color: #777;
+        }
+
+        .funkyradio input[type="radio"]:checked ~ label:before,
+        .funkyradio input[type="checkbox"]:checked ~ label:before {
+          content: '\2714';
+          text-indent: .9em;
+          color: #333;
+          background-color: #ccc;
+        }
+
+        .funkyradio input[type="radio"]:focus ~ label:before,
+        .funkyradio input[type="checkbox"]:focus ~ label:before {
+          box-shadow: 0 0 0 3px #999;
+        }
+
+        .funkyradio-success input[type="radio"]:checked ~ label:before,
+        .funkyradio-success input[type="checkbox"]:checked ~ label:before {
+          color: #fff;
+          background-color: #5cb85c;
+        }
+
+        .funkyradio-danger input[type="radio"]:checked ~ label:before,
+        .funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+          color: #fff;
+          background-color: #d9534f;
+        }
+    </style>
 	@yield('css')
 
 </head>
@@ -57,8 +140,8 @@
 
             <!-- ### $App Screen Footer ### -->
             <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-                <span>Copyright © 2019 Designed by
-                    <a href="https://codenesia.id" target='_blank' title="Codenesia">Codenesia</a>. All rights reserved.</span>
+                <span>Copyright © 2020 Designed by
+                    <a href="https://mssholeh.github.io" target='_blank' title="MSsholeh">Mssholeh</a>. All rights reserved.</span>
             </footer>
         </div>
     </div>

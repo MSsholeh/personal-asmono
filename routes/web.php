@@ -10,18 +10,23 @@ Auth::routes();
 */
 Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'Role:10']], function () {
     Route::get('/', 'DashboardController@index')->name('dash');
-    Route::resource('users', 'Admin\UserController');
-    Route::resource('sliders', 'Admin\SliderController');
-    Route::resource('members', 'Admin\MemberController');
-    Route::resource('gallery', 'Admin\GalleryController');
-    Route::resource('gallerycategory', 'Admin\GalleryCategoryController');
-    Route::resource('portfolio', 'Admin\PortfolioController');
-    Route::resource('portfoliocategory', 'Admin\PortfolioCategoryController');
-    Route::resource('companyprofile', 'Admin\CompanyProfileController')->only(['index', 'update']);
-    Route::resource('info', 'Admin\InfoController');
     Route::resource('generalsetting', 'Admin\GeneralSettingController');
-    Route::resource('about', 'Admin\AboutController');
+    Route::resource('podcast', 'Admin\PodcastController');
+    Route::resource('video', 'Admin\VideoController');
+    Route::resource('photo', 'Admin\PhotoController');
+    Route::resource('testimonial', 'Admin\TestimonialController');
     Route::resource('message', 'Admin\MessageController');
+    Route::resource('users', 'Admin\UserController');
+
+//   Route::resource('about', 'Admin\AboutController');
+//    Route::resource('sliders', 'Admin\SliderController');
+//    Route::resource('members', 'Admin\MemberController');
+//    Route::resource('gallery', 'Admin\GalleryController');
+//    Route::resource('gallerycategory', 'Admin\GalleryCategoryController');
+//    Route::resource('portfolio', 'Admin\PortfolioController');
+//    Route::resource('portfoliocategory', 'Admin\PortfolioCategoryController');
+//    Route::resource('companyprofile', 'Admin\CompanyProfileController')->only(['index', 'update']);
+//    Route::resource('info', 'Admin\InfoController');
 });
 
 Route::group(['namespace' => 'Web'], function(){

@@ -18,8 +18,8 @@ class users extends Seeder
 
         for ($i = 1; $i <= 1 ; $i++) {
             array_push($data, [
-                'name'     => 'Admin',
-                'email'    => 'admin@codenesia.com',
+                'name'     => 'Asmono Wikan',
+                'email'    => 'admin@admin.com',
                 'password' => bcrypt('admin'),
                 'role'     => 10,
                 'bio'      => $faker->realText(),

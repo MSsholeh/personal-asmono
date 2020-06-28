@@ -78,7 +78,7 @@ class GeneralSettingController extends Controller
             'metatext' => $request->metatext,
             'keyword' => $request->keyword,
             'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
+            'linkedin' => $request->linkedin,
             'instagram' => $request->instagram,
 
         ]);

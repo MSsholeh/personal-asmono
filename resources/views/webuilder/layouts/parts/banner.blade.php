@@ -1,13 +1,15 @@
-<!--================Banner Area =================-->
-<section class="banner_area" style="background-position: 0 65%">
-        <div class="container">
-            <div class="banner_inner_text">
-                <h4>{{$breadcrumb['text']}}</h4>
-                <ul>
-                    <li><a href="{{route('home')}}">Home</a></li>
-                <li class="active"><a href="{{$breadcrumb['href']}}">{{$breadcrumb['text']}}</a></li>
-                </ul>
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>{{$breadcrumb['text']}}</h2>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <!--================End Banner Area =================-->
+    </div>
+</section>
+<!-- breadcrumb start-->
