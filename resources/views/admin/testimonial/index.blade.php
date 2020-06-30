@@ -20,6 +20,7 @@
                     <th width="5%">NO</th>
                     <th>Image</th>
                     <th>Name</th>
+                    <th>Position</th>
                     <th>Description</th>
                     <th width="15%">Actions</th>
                 </tr>
@@ -32,6 +33,7 @@
                         <td>{{ $no++ }}</td>
                         <td><img src="{{ asset ($item->image) }}" width="100px"></td>
                         <td>{{ !empty($item->name) ? $item->name : '-' }}</td>
+                        <td>{{ !empty($item->position) ? $item->position : '-' }}</td>
                         <td>{{ !empty($item->description) ? $item->description : '-' }}</td>
                         <td>
                             <ul class="list-inline">

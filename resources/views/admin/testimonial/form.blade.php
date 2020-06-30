@@ -4,6 +4,8 @@
 
           {!! Form::myInput('text', 'name', 'Name') !!}
 
+          {!! Form::myInput('text', 'position', 'Position') !!}
+
           <div class="form-group">
               {!! Form::label('image', 'Image') !!}
               <div class="custom-file">

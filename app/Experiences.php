@@ -4,18 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Experiences extends Model
 {
-    protected $table = "message";
+    protected $table = "experiences";
 
     protected $fillable = [
-        'name','email','subject','message'
+        'title','description'
    ];
 
     public static function rules($update = false, $id = null)
     {
         $commun = [
-
         ];
 
         if ($update) {

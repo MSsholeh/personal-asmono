@@ -19,6 +19,9 @@ class CreateGeneralsettingTable extends Migration
             $table->string('about_caption',225)->nullable();
             $table->string('about_photo',225)->nullable();
 
+            $table->text('about_short_description')->nullable();
+            $table->integer('year_experience')->nullable();
+
             $table->string('about_title',225)->nullable();
             $table->text('about_description')->nullable();
             $table->string('about_image',225)->nullable();

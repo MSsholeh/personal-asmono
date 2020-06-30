@@ -4,7 +4,7 @@
 
 			{!! Form::myInput('text', 'website_name', 'Website Name') !!}
 
-            <img id="preview-logo" src="{{ url($item->website_logo) }}" width="190px" height="40px"><br>
+            <img id="preview-logo" src="{{ asset($item->website_logo) }}" width="190px" height="40px"><br><br>
 
             <div class="form-group">
                   {!! Form::label('website_logo', 'Website Logo') !!}
@@ -14,7 +14,7 @@
                   </div><br><br>
             </div>
 
-            <img id="preview-favicon" src="{{ url($item->website_favicon) }}" width="40px" height="40px"><br>
+            <img id="preview-favicon" src="{{ asset($item->website_favicon) }}" width="40px" height="40px"><br><br>
 
             <div class="form-group">
                   {!! Form::label('website_favicon', 'Website favicon') !!}
@@ -26,15 +26,15 @@
 
             {!! Form::label('keyword', 'Keyword (SEO)') !!}
 
-            {!! Form::textarea('keyword', null,['id' => 'keyword', 'rows' => 4, 'cols' => '90%']) !!}<br><br>
+            {!! Form::textarea('keyword', null,['id' => 'keyword', 'rows' => 4, 'class'=>'form-control']) !!}<br>
 
             {!! Form::label('metatext', 'Metatext (SEO)') !!}
 
-            {!! Form::textarea('metatext', null,['id' => 'metatext', 'rows' => 4, 'cols' => '90%']) !!}<br><br>
+            {!! Form::textarea('metatext', null,['id' => 'metatext', 'rows' => 4, 'class'=>'form-control']) !!}<br><br>
 
             {!! Form::myInput('text', 'facebook', 'Link Facebook Account') !!}
 
-            {!! Form::myInput('text', 'Linkedin', 'Link Linkedin Account') !!}
+            {!! Form::myInput('text', 'linkedin', 'Link Linkedin Account') !!}
 
             {!! Form::myInput('text', 'instagram', 'Link Instagram Account') !!}
 

@@ -1,13 +1,13 @@
 @extends('admin.default')
 
 @section('page-header')
-    Photo <small>{{ trans('app.manage') }}</small>
+    Article <small>{{ trans('app.manage') }}</small>
 @endsection
 
 @section('content')
 
     <div class="mB-20">
-        <a href="{{ route(ADMIN . '.photo.create') }}" class="btn btn-info">
+        <a href="{{ route(ADMIN . '.article.create') }}" class="btn btn-info">
             {{ trans('app.add_button') }}
         </a>
     </div>
@@ -18,8 +18,9 @@
             <thead>
                 <tr>
                     <th width="5%">NO</th>
-                    <th>Image</th>
-                    <th>Caption</th>
+                    <th width="10%">Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
                     <th>Status</th>
                     <th width="15%">Actions</th>
                 </tr>
@@ -30,8 +31,9 @@
                 @foreach ($items  as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td><img src="{{ asset ($item->image) }}" width="150px"></td>
-                        <td>{{ !empty($item->description) ? $item->description : '-' }}</td>
+                        <td><img src="{{ asset ($item->image) }}" width="100px"></td>
+                        <td>{{ !empty($item->title) ? $item->title : '-' }}</td>
+                        <td>{{ !empty($item->category_id) ? $item->category->name : '-'}}</td>
                         <td>
                             @if($item->status==1)
                                 <span class="badge badge-success">Publish</span>
@@ -42,11 +44,11 @@
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <a href="{{ route(ADMIN . '.photo.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
+                                    <a href="{{ route(ADMIN . '.article.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-sm"><span class="ti-pencil"></span></a></li>
                                 <li class="list-inline-item">
                                     {!! Form::open([
                                         'class'=>'delete',
-                                        'url'  => route(ADMIN . '.photo.destroy', $item->id),
+                                        'url'  => route(ADMIN . '.article.destroy', $item->id),
                                         'method' => 'DELETE',
                                         ])
                                     !!}

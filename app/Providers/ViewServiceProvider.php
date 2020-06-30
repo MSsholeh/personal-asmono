@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\GeneralSetting;
-use App\CompanyProfile;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -29,8 +28,7 @@ class ViewServiceProvider extends ServiceProvider
         // Using Closure based composers...
         View::composer('webuilder.layouts.app', function ($view) {
             $view->with([
-                'generalSetting' => GeneralSetting::first(),
-                'companyProfile' => CompanyProfile::first()
+                'generalSetting' => GeneralSetting::first()
             ]);
         });
 

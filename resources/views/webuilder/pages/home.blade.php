@@ -13,10 +13,10 @@
             <div class="col-lg-7">
                 <div class="banner_text">
                     <div class="banner_text_iner">
-                        <h5>Hi there, This is Asmono Wikan</h5>
-                        <h1>Fullstack Developer</h1>
+                        <h5>Hi there, This is {{$setting->about_name}}</h5>
+                        <h1>{{$setting->about_caption}}</h1>
                         <div class="banner_btn">
-                            <a href="#" class="btn_1">Contact me</a>
+                            <a href="{{route('contact')}}" class="btn_1">Contact me</a>
                         </div>
                     </div>
                 </div>
@@ -33,9 +33,9 @@
             <div class="col-lg-6">
                 <div class="about_text">
                     <h4>about me</h4>
-                    <p>Good lights it very to above. Days image to sea. Over there seasons and spirit beast in. Greater bearing creepeth very behold fourth night morning seed moved.</p>
+                    <p>{{ $setting->about_short_description }}</p>
                     <div class="experiance">
-                        <h2>07</h2>
+                        <h2>{{ $setting->year_experience }}</h2>
                         <p>Years of <span>Experiences</span></p>
                     </div>
                 </div>
@@ -44,30 +44,12 @@
                 <div class="experiance_list">
                     <h4>Experiences</h4>
                     <div class="experiance_list_iner">
+                        @foreach($experiences as $experience)
                         <div class="single_experiance_list">
-                            <h5>Product designer</h5>
-                            <p>at apple from 2011 to present</p>
+                            <h5>{{$experience->title}}</h5>
+                            <p>{{$experience->description}}</p>
                         </div>
-                        <div class="single_experiance_list">
-                            <h5>UI designer </h5>
-                            <p>at theme from 2011 to present</p>
-                        </div>
-                        <div class="single_experiance_list">
-                            <h5>Print designert</h5>
-                            <p>at envato from 2011 to present</p>
-                        </div>
-                        <div class="single_experiance_list">
-                            <h5>Product designer</h5>
-                            <p>at apple from 2011 to present</p>
-                        </div>
-                        <div class="single_experiance_list">
-                            <h5>UI designer </h5>
-                            <p>at theme from 2011 to present</p>
-                        </div>
-                        <div class="single_experiance_list">
-                            <h5>Print designert</h5>
-                            <p>at envato from 2011 to present</p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -76,73 +58,13 @@
 </section>
 <!-- about part end-->
 
-<!-- portfolio part css start -->
-<section class="portfolio_part section_padding">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="section_tittle">
-                    <p>My portfolio</p>
-                    <h2>Take a look around some of my awesome works</h2>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="section_btn text-right">
-                    <a href="#" class="btn_2">More works</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="mesonary_part">
-                    <div class="grid">
-                        <div class="grid-sizer"></div>
-                        <a href="portfolio_details.html" class="grid-item">
-                            <img src="img/port_1.png" alt="">
-                            <div class="portfolio_hover_text">
-                                <i class="ti-plus"></i>
-                            </div>
-                        </a>
-                        <a href="portfolio_details.html" class="grid-item big_height big_weight">
-                            <img src="img/port_2.png" alt="">
-                            <div class="portfolio_hover_text">
-                                <i class="ti-plus"></i>
-                            </div>
-                        </a>
-                        <a href="portfolio_details.html" class="grid-item">
-                            <img src="img/port_3.png" alt="">
-                            <div class="portfolio_hover_text">
-                                <i class="ti-plus"></i>
-                            </div>
-                        </a>
-                        <a href="portfolio_details.html" class="grid-item big_weight">
-                            <img src="img/port_4.png" alt="">
-                            <div class="portfolio_hover_text">
-                                <i class="ti-plus"></i>
-                            </div>
-                        </a>
-                        <a href="portfolio_details.html" class="grid-item">
-                            <img src="img/port_5.png" alt="">
-                            <div class="portfolio_hover_text">
-                                <i class="ti-plus"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- portfolio part css end -->
-
 <!-- Service part start-->
-<section class="service_part padding_bottom">
+<section class="service_part section_padding">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section_tittle text-center">
-                    <p>My portfolio</p>
-                    <h2>Take a look around some of my awesome works</h2>
+                    <h2>My services</h2>
                 </div>
             </div>
         </div>
@@ -153,7 +75,6 @@
                         <span class="flaticon-layers"></span>
                         <h2>User experience design</h2>
                         <p>There winged grass midst moving earth seed herb fifth you multiply you divide cattle.</p>
-                        <a href="#" class="learn_btn">learn more</a>
                     </div>
                 </div>
             </div>
@@ -163,7 +84,6 @@
                         <span class="flaticon-design"></span>
                         <h2>Digital art</h2>
                         <p>There winged grass midst moving earth seed herb fifth you multiply you divide cattle.</p>
-                        <a href="#" class="learn_btn">learn more</a>
                     </div>
                 </div>
             </div>
@@ -173,7 +93,6 @@
                         <span class="flaticon-speaker"></span>
                         <h2>Social media marketing</h2>
                         <p>There winged grass midst moving earth seed herb fifth you multiply you divide cattle.</p>
-                        <a href="#" class="learn_btn">learn more</a>
                     </div>
                 </div>
             </div>
@@ -181,6 +100,100 @@
     </div>
 </section>
 <!-- Service part end-->
+
+<!-- podcast part css start -->
+<section class="related_project padding_bottom">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section_tittle">
+                    <p>My Videos</p>
+                    <h2>Take a look around some of my awesome works</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach($videos as $video)
+            <div class="col-lg-4 col-sm-6" style="margin-bottom:20px">
+                <div class="single_project_details">
+                    <a href="{{ url('video/'.$video->id) }}" class="grid-item">
+                        <img src="https://img.youtube.com/vi/{{$video->link}}/maxresdefault.jpg" alt="">
+                        <div class="portfolio_hover_text">
+                            <i class="ti-control-play" style="font-size:40px;top:35%;">
+                                <p>{{ $video->title }}</p>
+                            </i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+         <div class="section_btn">
+            <br><center><a href="{{route('video')}}" class="btn_2">More videos</a></center>
+        </div>
+    </div>
+</section>
+<!-- podcast part css end -->
+
+<!-- podcast part css start -->
+<section class="portfolio_part padding_bottom">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="section_tittle text-right">
+                    <p>My Podcast</p>
+                    <h2>Take a look around some of my awesome works</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach($podcasts as $podcast)
+            <div class="col-lg-4 col-sm-6" style="margin-bottom:20px">
+                <div class="single_project_details">
+                    <iframe src="https://open.spotify.com/embed/{{$podcast->link}}" width="100%" height="170" frameborder="0" allowtransparency="true"></iframe>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="section_btn">
+            <br><center><a href="{{route('podcast')}}" class="btn_2">More podcast</a></center>
+        </div>
+    </div>
+</section>
+<!-- podcast part css end -->
+
+<!-- Instagram part css start -->
+<section class="portfolio_part padding_bottom">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section_tittle">
+                    <p>My instagram</p>
+                    <h2>Follow me on Instagram</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section_btn text-right">
+                    <a href="https://instagram/asmonowikan" class="btn_2">@asmonowikan</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mesonary_part">
+                    <div id="instagram-feed-asmono" class="instagram_feed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram part css end -->
 
 <!--::review_part start::-->
 <section class="review_part section_padding">
@@ -195,78 +208,20 @@
        <div class="row">
           <div class="col-lg-12">
              <div class="client_review_part owl-carousel">
+                @foreach($testimonials as $testimonial)
                 <div class="client_review_single">
                    <div class="client_review_text">
                       <p>
-                        “There winged grass midst moving earth seed herb fifth you multiply you divide cattle stars first cattle was had spirit you're thing, night darkness. Which itself stars
+                        “{{$testimonial->description}}
                       </p>
                       <div class="client_review_img">
-                        <img src="img/client/client_1.png" alt="#" />
-                        <h4>Mosan Cameron</h4>
-                        <p>Critive director</p>
+                        <img src="{{ asset($testimonial->image) }}" class="rounded-circle" alt="{{$testimonial->name}}" />
+                        <h4>{{$testimonial->name}}</h4>
+                        <p>{{$testimonial->position}}</p>
                       </div>
                    </div>
                 </div>
-                <div class="client_review_single">
-                   <div class="client_review_text">
-                      <p>
-                        “There winged grass midst moving earth seed herb fifth you multiply you divide cattle stars first cattle was had spirit you're thing, night darkness. Which itself stars
-                      </p>
-                      <div class="client_review_img">
-                         <img src="img/client/client_2.png" alt="#" />
-                         <h4>Mosan Cameron</h4>
-                         <p>Critive director</p>
-                      </div>
-                   </div>
-                </div>
-                <div class="client_review_single">
-                   <div class="client_review_text">
-                      <p>
-                        “There winged grass midst moving earth seed herb fifth you multiply you divide cattle stars first cattle was had spirit you're thing, night darkness. Which itself stars
-                      </p>
-                      <div class="client_review_img">
-                         <img src="img/client/client_2.png" alt="#" />
-                         <h4>Mosan Cameron</h4>
-                         <p>Critive director</p>
-                      </div>
-                   </div>
-                </div>
-                <div class="client_review_single">
-                   <div class="client_review_text">
-                      <p>
-                        “There winged grass midst moving earth seed herb fifth you multiply you divide cattle stars first cattle was had spirit you're thing, night darkness. Which itself stars
-                      </p>
-                      <div class="client_review_img">
-                         <img src="img/client/client_2.png" alt="#" />
-                         <h4>Mosan Cameron</h4>
-                         <p>Critive director</p>
-                      </div>
-                   </div>
-                </div>
-                <div class="client_review_single">
-                   <div class="client_review_text">
-                        <p>
-                        “There winged grass midst moving earth seed herb fifth you multiply you divide cattle stars first cattle was had spirit you're thing, night darkness. Which itself stars
-                        </p>
-                      <div class="client_review_img">
-                         <img src="img/client/client_3.png" alt="#" />
-                         <h4>Mosan Cameron</h4>
-                         <p>Critive director</p>
-                      </div>
-                   </div>
-                </div>
-                <div class="client_review_single">
-                   <div class="client_review_text">
-                      <p>
-                        “There winged grass midst moving earth seed herb fifth you multiply you divide cattle stars first cattle was had spirit you're thing, night darkness. Which itself stars
-                      </p>
-                      <div class="client_review_img">
-                         <img src="img/client/client_3.png" alt="#" />
-                         <h4>Mosan Cameron</h4>
-                         <p>Critive director</p>
-                      </div>
-                   </div>
-                </div>
+                @endforeach
              </div>
           </div>
        </div>
@@ -274,4 +229,34 @@
 </section>
  <!--::review_part end::-->
 
+@endsection
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="{{asset('js/jquery.instagramFeed.js')}}"></script>
+
+<script>
+    $(window).on('load',function(){
+      $.instagramFeed({
+        'username':'asmonowikan',
+        'container':"#instagram-feed-asmono",
+        'display_profile':false,
+        'display_biography':false,
+        'items': 8,
+        'items_per_row': 4
+      });
+    });
+
+    $(window).on('load resize', function() {
+      $('iframe[src*="embed.spotify.com"]').each( function() {
+        $(this).css('width', $(this).parent().css('width'));
+        $(this).attr('src', $(this).attr('src'));
+        $(this).removeClass('loaded');
+
+        $(this).on('load', function(){
+          $(this).addClass('loaded');
+        });
+      });
+    });
+</script>
 @endsection

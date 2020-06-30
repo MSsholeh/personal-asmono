@@ -4,18 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Article extends Model
 {
-    protected $table = "message";
+    protected $table = "article";
 
     protected $fillable = [
-        'name','email','subject','message'
-   ];
+        'image','title','category_id','description','status'
+    ];
+
+    function category(){
+		return $this->belongsTo('App\ArticleCategory', 'category_id');
+	}
 
     public static function rules($update = false, $id = null)
     {
         $commun = [
-
+            'image' => 'image',
         ];
 
         if ($update) {

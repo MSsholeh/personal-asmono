@@ -36,7 +36,6 @@ class PhotoController extends Controller
 
             Portfolio::create([
                 'image'         => 'uploads/'.$uploadname,
-                'title'         => $request->title,
                 'description'   => $request->description,
                 'status'        => $request->status,
                 'type'          => $request->type,
@@ -76,7 +75,6 @@ class PhotoController extends Controller
 
             $item->update([
                 'image'         => 'uploads/'.$uploadname,
-                'title'         => $request->title,
                 'description'   => $request->description,
                 'status'        => $request->status,
                 'type'          => $request->type,

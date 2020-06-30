@@ -2,8 +2,6 @@
 	<div class="col-sm-8">
 		<div class="bgc-white p-20 bd">
 
-          {!! Form::myInput('text', 'title', 'Title') !!}
-
           <div class="form-group">
               {!! Form::label('image', 'Image') !!}
               <div class="custom-file">
@@ -13,8 +11,8 @@
               <img id="preview" src="https://via.placeholder.com/300?text=No+Image" width="60%"/>
           </div>
 
-          {!! Form::label('description', 'Description'); !!}
-          {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control', 'rows' => 4]) !!}<br>
+          {!! Form::label('description', 'Caption'); !!}
+          {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => 4]) !!}<br>
 
           {!! Form::label('status', 'Status') !!}
             <div class="funkyradio">
@@ -61,19 +59,5 @@
             }
         }
     </script>
-    <script>
-      $('#description').summernote({
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
-    </script>
+
 @endsection

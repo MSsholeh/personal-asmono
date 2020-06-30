@@ -27,6 +27,9 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
+    <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.6.1/Youtube.min.js"></script>
     @yield('css-custom')
 
 </head>

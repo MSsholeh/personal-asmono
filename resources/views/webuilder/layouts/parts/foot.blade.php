@@ -5,27 +5,28 @@
              <div class="col-lg-6">
                  <div class="footer_text">
                      <span>Discuss your project now</span>
-                     <h2>example@gilb.com </h2>
+                     <h2>{{$generalSetting->email}}</h2>
                  </div>
              </div>
              <div class="col-lg-6">
                  <div class="footer_btn">
-                     <a href="#" class="btn_1">Download CV</a>
+                     <a href="{{route('contact')}}" class="btn_1">Contact</a>
                  </div>
              </div>
              <div class="col-lg-6">
                  <div class="footer_menu">
-                     <a href="#">About</a>
-                     <a href="#">WORK</a>
-                     <a href="#">Contact</a>
+                     <a href="{{route('about')}}">About</a>
+                     <a href="{{route('article')}}">Article</a>
+                     <a href="{{route('podcast')}}">Podcast</a>
+                     <a href="{{route('video')}}">Video</a>
+                     <a href="{{route('photo')}}">Photo</a>
                  </div>
              </div>
              <div class="col-lg-6">
                 <div class="social_icon">
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
-                    <a href="#"><i class="fas fa-globe"></i></a>
+                    <a href="{{$generalSetting->facebook}}"><i class="fab fa-facebook-square"></i></a>
+                    <a href="{{$generalSetting->instagram}}"><i class="fab fa-instagram"></i></a>
+                    <a href="{{$generalSetting->linkedin}}"><i class="fab fa-linkedin"></i></a>
                 </div>
              </div>
              <div class="col-lg-12">

@@ -4,108 +4,82 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\About;
+use App\GeneralSetting;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Intervention\Image\ImageManagerStatic as Image;
+use File;
+use Image;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        $items = About::latest('created_at')->get();
-
-        return view('admin.about.index', compact('items'));
+        return redirect('admin/about/1/edit')->withSuccess(trans('app.success_update'));
     }
 
-    public function create()
-    {
-        return view('admin.about.create');
-    }
 
     public function store(Request $request)
     {
-        $this->validate($request, About::rules());
+        $this->validate($request, GeneralSetting::rules());
 
-        if ($request->hasfile('image')) {
-            $image = $request->image;
-            $namewithextension = $image->getClientOriginalName(); //Name with extension 'filename.jpg'
-            $name = explode('.', $namewithextension)[0]; // Filename 'filename'
-            $extension = $image->getClientOriginalExtension(); //Extension 'jpg'
-            $uploadname = time() . '.' . $extension;
-            $image->move(public_path() . '/uploads/', $uploadname);
-
-            // crop image
-            $image = Image::make(public_path('/uploads/'. $uploadname));
-            $croppath = public_path('/uploads/'.$uploadname);
-
-            $image->crop($request->input('w'), $request->input('h'), $request->input('x1'), $request->input('y1'));
-            $image->save($croppath);
-
-            About::create([
-                'image' => 'uploads/'.$uploadname,
-                'title' => $request->title,
-                'desc' => $request->desc
-            ]);
-        }else{
-            About::create($request->all());
-        }
+        GeneralSetting::create($request->all());
 
         return back()->withSuccess(trans('app.success_store'));
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
-        $item = About::findOrFail($id);
+        $item = GeneralSetting::findOrFail($id);
 
         return view('admin.about.edit', compact('item'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request, About::rules(true, $id));
+        $id=1;
 
-        $item = About::findOrFail($id);
+        $this->validate($request, GeneralSetting::rules(true, $id));
 
-        if ($request->hasfile('image')) {
-            $image = $request->image;
-            $namewithextension = $image->getClientOriginalName(); //Name with extension 'filename.jpg'
-            $name = explode('.', $namewithextension)[0]; // Filename 'filename'
-            $extension = $image->getClientOriginalExtension(); //Extension 'jpg'
-            $uploadname = time() . '.' . $extension;
-            $image->move(public_path() . '/uploads/', $uploadname);
+        $item = GeneralSetting::findOrFail($id);
 
-            // crop image
-            $image = Image::make(public_path('/uploads/'. $uploadname));
-            $croppath = public_path('/uploads/'.$uploadname);
+        if($image = $request->file('about_photo')) {
 
-            $image->crop($request->input('w'), $request->input('h'), $request->input('x1'), $request->input('y1'));
-            $image->save($croppath);
+            $image       = $request->file('about_photo');
+            $filename    = $image->getClientOriginalName();
+
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->save(public_path('uploads/' .$filename));
 
             $item->update([
-                'image' => 'uploads/'.$uploadname,
-                'title' => $request->title,
-                'desc'  => $request->desc
+                'about_photo' => 'uploads/' .$filename
             ]);
-
-        }else{
-
-            $item->update($request->all());
-
         }
 
-        return redirect()->route(ADMIN . '.about.index')->withSuccess(trans('app.success_update'));
-    }
+        if($favicon = $request->file('about_image')) {
 
-    public function destroy($id)
-    {
-        About::destroy($id);
+            $favicon    = $request->file('about_image');
+            $filefav    = $favicon->getClientOriginalName();
 
-        return back()->withSuccess(trans('app.success_destroy'));
+            $favicon_resize = Image::make($favicon->getRealPath());
+            $favicon_resize->save(public_path('uploads/' .$filefav));
+
+            $item->update([
+                'about_image' => 'uploads/' .$filefav
+            ]);
+        }
+
+
+        $item->update([
+            'about_name' => $request->about_name,
+            'about_caption' => $request->about_caption,
+            'about_short_description' => $request->about_short_description,
+            'year_experience' => $request->year_experience,
+            'about_title' => $request->about_title,
+            'about_description' => $request->about_description,
+            'email' => $request->email,
+            'address'=> $request->address,
+        ]);
+
+        return redirect()->route(ADMIN . '.about.index');
     }
 }
 

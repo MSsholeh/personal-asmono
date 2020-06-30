@@ -1215,7 +1215,7 @@ ul {
 @media (min-width: 768px) {
   /* line 534, /Applications/MAMP/htdocs/palash/cl/july 2019/july/195 Resume/195 resume html/sass/_blog.scss */
   .blog_details {
-    padding: 60px 30px 35px 35px;
+    padding: 30px 30px 35px 35px;
   }
 }
 
@@ -2802,7 +2802,7 @@ ul {
   color: #fff;
   font-size: 25px;
   position: absolute;
-  top: 48%;
+  top: 35%;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -3785,7 +3785,6 @@ h6 {
   background-repeat: no-repeat !important;
   background-position: center center !important;
   background-size: cover !important;
-  height: 200px;
 }
 
 /* line 456, /Applications/MAMP/htdocs/palash/cl/july 2019/july/195 Resume/195 resume html/sass/_elements.scss */

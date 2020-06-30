@@ -11,8 +11,9 @@
         <span class="title">Dashboard</span>
     </a>
 </li>
+
 <li class="nav-item">
-    <a class="sidebar-link" href="#">
+    <a class="sidebar-link" href="{{ route(ADMIN . '.about.edit', '1') }}">
         <span class="icon-holder">
             <i class="c-red-500 ti-user"></i>
         </span>
@@ -21,12 +22,33 @@
 </li>
 
 <li class="nav-item">
-    <a class="sidebar-link" href="#">
+    <a class="sidebar-link" href="{{ route(ADMIN . '.experiences.index') }}">
+        <span class="icon-holder">
+            <i class="c-yellow-500 ti-star"></i>
+        </span>
+        <span class="title">Experiences</span>
+    </a>
+</li>
+
+
+<li class="nav-item dropdown">
+    <a class="dropdown-toggle" href="javascript:void(0);">
         <span class="icon-holder">
             <i class="c-blue-500 ti-pencil-alt"></i>
         </span>
         <span class="title">Article</span>
+        <span class="arrow">
+            <i class="ti-angle-right"></i>
+        </span>
     </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a class="sidebar-link" href="{{ route(ADMIN . '.article.index') }}">List</a>
+        </li>
+        <li>
+            <a class="sidebar-link" href="{{ route(ADMIN . '.articlecategory.index') }}">Category</a>
+        </li>
+    </ul>
 </li>
 
 <li class="nav-item">

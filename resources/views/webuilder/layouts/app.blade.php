@@ -11,6 +11,8 @@
 
 @include('webuilder.layouts.parts.foot')
 
+@yield('js')
+
 </body>
 
 </html>

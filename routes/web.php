@@ -11,30 +11,30 @@ Auth::routes();
 Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'Role:10']], function () {
     Route::get('/', 'DashboardController@index')->name('dash');
     Route::resource('generalsetting', 'Admin\GeneralSettingController');
+    Route::resource('articlecategory', 'Admin\ArticleCategoryController');
+    Route::resource('article', 'Admin\ArticleController');
+    Route::resource('about', 'Admin\AboutController');
+    Route::resource('experiences', 'Admin\ExperiencesController');
     Route::resource('podcast', 'Admin\PodcastController');
     Route::resource('video', 'Admin\VideoController');
     Route::resource('photo', 'Admin\PhotoController');
     Route::resource('testimonial', 'Admin\TestimonialController');
     Route::resource('message', 'Admin\MessageController');
     Route::resource('users', 'Admin\UserController');
-
-//   Route::resource('about', 'Admin\AboutController');
-//    Route::resource('sliders', 'Admin\SliderController');
-//    Route::resource('members', 'Admin\MemberController');
-//    Route::resource('gallery', 'Admin\GalleryController');
-//    Route::resource('gallerycategory', 'Admin\GalleryCategoryController');
-//    Route::resource('portfolio', 'Admin\PortfolioController');
-//    Route::resource('portfoliocategory', 'Admin\PortfolioCategoryController');
-//    Route::resource('companyprofile', 'Admin\CompanyProfileController')->only(['index', 'update']);
-//    Route::resource('info', 'Admin\InfoController');
 });
 
 Route::group(['namespace' => 'Web'], function(){
     Route::get('/','SiteController@index')->name('home');
-    Route::get('projects','SiteController@projects')->name('projects');
-    Route::get('about-us','SiteController@aboutUs')->name('aboutUs');
+    Route::get('photo','SiteController@photo')->name('photo');
+    Route::get('video','SiteController@video')->name('video');
+    Route::get('video/{id}','SiteController@video_detail')->name('video.detail');
+    Route::get('podcast','SiteController@podcast')->name('podcast');
+    Route::get('podcast/{id}','SiteController@podcast_detail')->name('podcast.detail');
+    Route::get('about','SiteController@about')->name('about');
+    Route::get('article','SiteController@article')->name('article');
+    Route::get('article/{id}','SiteController@article_detail')->name('article.detail');
     Route::get('gallery','SiteController@gallery')->name('gallery');
-    Route::get('contact-us','SiteController@contactUs')->name('contactUs');
-    Route::post('contact-us','SiteController@contactUsSubmit')->name('contactUs.submit');
+    Route::get('contact','SiteController@contact')->name('contact');
+    Route::post('contact','SiteController@contactSubmit')->name('contact.submit');
 });
 
