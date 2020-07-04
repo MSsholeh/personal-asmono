@@ -29,6 +29,9 @@ class ArticleController extends Controller
     {
         $this->validate($request, Article::rules());
 
+        $slug = str_slug($request->title).'-'.uniqid();
+        $request->request->add(['slug' => $slug]);
+
         if ($request->hasfile('image')) {
             $image = $request->image;
             $namewithextension = $image->getClientOriginalName(); //Name with extension 'filename.jpg'
@@ -41,6 +44,7 @@ class ArticleController extends Controller
             Article::create([
                 'image'         => 'uploads/'.$uploadname,
                 'title'         => $request->title,
+                'slug'          => $request->slug,
                 'category_id'   => $request->category_id,
                 'description'   => $request->description,
                 'status'        => $request->status,
@@ -72,6 +76,9 @@ class ArticleController extends Controller
 
         $item = Article::findOrFail($id);
 
+        $slug = str_slug($request->title).'-'.uniqid();
+        $request->request->add(['slug' => $slug]);
+
         if ($request->hasfile('image')) {
             $image = $request->image;
             $namewithextension = $image->getClientOriginalName(); //Name with extension 'filename.jpg'
@@ -83,6 +90,7 @@ class ArticleController extends Controller
             $item->update([
                 'image'         => 'uploads/'.$uploadname,
                 'title'         => $request->title,
+                'slug'          => $request->slug,
                 'category_id'   => $request->category_id,
                 'description'   => $request->description,
                 'status'        => $request->status,

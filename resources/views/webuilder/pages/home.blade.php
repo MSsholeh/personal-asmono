@@ -69,38 +69,29 @@
             </div>
         </div>
         <div class="row align-items-center">
+            @php
+                $i=1;
+            @endphp
+            @foreach($services as $service)
             <div class="col-lg-4 col-sm-6">
                 <div class="single_service_part">
-                    <div class="single_service_text">
-                        <span class="flaticon-layers"></span>
-                        <h2>User experience design</h2>
-                        <p>There winged grass midst moving earth seed herb fifth you multiply you divide cattle.</p>
+                    <div class="single_service_text @if($i==2) active @endif">
+                        <span class="{{$service->icon}}"></span>
+                        <h2>{{$service->title}}n</h2>
+                        <p>{{$service->description}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="single_service_part active">
-                    <div class="single_service_text">
-                        <span class="flaticon-design"></span>
-                        <h2>Digital art</h2>
-                        <p>There winged grass midst moving earth seed herb fifth you multiply you divide cattle.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="single_service_part">
-                    <div class="single_service_text">
-                        <span class="flaticon-speaker"></span>
-                        <h2>Social media marketing</h2>
-                        <p>There winged grass midst moving earth seed herb fifth you multiply you divide cattle.</p>
-                    </div>
-                </div>
-            </div>
+            @php
+                $i++;
+            @endphp
+            @endforeach
         </div>
     </div>
 </section>
 <!-- Service part end-->
 
+@if($videos->count() > 0)
 <!-- podcast part css start -->
 <section class="related_project padding_bottom">
     <div class="container">
@@ -136,7 +127,9 @@
     </div>
 </section>
 <!-- podcast part css end -->
+@endif
 
+@if($podcasts->count() > 0)
 <!-- podcast part css start -->
 <section class="portfolio_part padding_bottom">
     <div class="container">
@@ -167,6 +160,7 @@
     </div>
 </section>
 <!-- podcast part css end -->
+@endif
 
 <!-- Instagram part css start -->
 <section class="portfolio_part padding_bottom">
@@ -180,7 +174,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="section_btn text-right">
-                    <a href="https://instagram/asmonowikan" class="btn_2">@asmonowikan</a>
+                    <a href="https://instagram.com/asmonowikan" class="btn_2">@asmonowikan</a>
                 </div>
             </div>
         </div>
@@ -195,6 +189,7 @@
 </section>
 <!-- Instagram part css end -->
 
+@if($testimonials->count() > 0)
 <!--::review_part start::-->
 <section class="review_part section_padding">
     <div class="container">
@@ -228,6 +223,7 @@
     </div>
 </section>
  <!--::review_part end::-->
+@endif
 
 @endsection
 

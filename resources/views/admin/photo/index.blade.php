@@ -24,13 +24,13 @@
                     <th width="15%">Actions</th>
                 </tr>
             </thead>
-
+https://via.placeholder.com/300?text=No+Image
             <tbody>
                 @php $no = 1; @endphp
                 @foreach ($items  as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td><img src="{{ asset ($item->image) }}" width="150px"></td>
+                        <td><img src="{{ !empty($item->image) ? asset($item->image) : 'https://via.placeholder.com/150?text=No+Image'}}" width="150px"></td>
                         <td>{{ !empty($item->description) ? $item->description : '-' }}</td>
                         <td>
                             @if($item->status==1)

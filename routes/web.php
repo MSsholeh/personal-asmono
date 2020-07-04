@@ -14,6 +14,7 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'Ro
     Route::resource('articlecategory', 'Admin\ArticleCategoryController');
     Route::resource('article', 'Admin\ArticleController');
     Route::resource('about', 'Admin\AboutController');
+    Route::resource('services', 'Admin\ServicesController');
     Route::resource('experiences', 'Admin\ExperiencesController');
     Route::resource('podcast', 'Admin\PodcastController');
     Route::resource('video', 'Admin\VideoController');
@@ -32,9 +33,11 @@ Route::group(['namespace' => 'Web'], function(){
     Route::get('podcast/{id}','SiteController@podcast_detail')->name('podcast.detail');
     Route::get('about','SiteController@about')->name('about');
     Route::get('article','SiteController@article')->name('article');
-    Route::get('article/{id}','SiteController@article_detail')->name('article.detail');
+    Route::get('article/{slug}','SiteController@article_detail')->name('article.detail');
+    Route::get('article/category/{slug}','SiteController@article_category')->name('article.category');
     Route::get('gallery','SiteController@gallery')->name('gallery');
     Route::get('contact','SiteController@contact')->name('contact');
     Route::post('contact','SiteController@contactSubmit')->name('contact.submit');
+    Route::post('comment', 'SiteController@comment')->name('comment.submit');
 });
 

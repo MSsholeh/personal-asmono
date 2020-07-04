@@ -22,6 +22,15 @@
 </li>
 
 <li class="nav-item">
+    <a class="sidebar-link" href="{{ route(ADMIN . '.services.index') }}">
+        <span class="icon-holder">
+            <i class="c-purple-500 ti-medall"></i>
+        </span>
+        <span class="title">Services</span>
+    </a>
+</li>
+
+<li class="nav-item">
     <a class="sidebar-link" href="{{ route(ADMIN . '.experiences.index') }}">
         <span class="icon-holder">
             <i class="c-yellow-500 ti-star"></i>
@@ -29,7 +38,6 @@
         <span class="title">Experiences</span>
     </a>
 </li>
-
 
 <li class="nav-item dropdown">
     <a class="dropdown-toggle" href="javascript:void(0);">

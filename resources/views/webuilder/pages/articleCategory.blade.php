@@ -8,43 +8,50 @@
 
 @section('body')
 
-@include('webuilder.layouts.parts.banner', ['breadcrumb'  => ['text' => 'Article']])
+@include('webuilder.layouts.parts.banner', ['breadcrumb'  => ['text' => 'Article Category']])
     <!--================Blog Area =================-->
     <section class="blog_area section_padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
+                        <h4>Category "{{$categories->name}}"</h4><br>
                         @php
                             $increment = ($articles->currentPage() - 1) * $articles->perPage();
                         @endphp
-                        @foreach($articles as $item)
+                        @if($articles->count() > 0)
+                            @foreach($articles as $item)
+                            <article class="blog_item" @if($item->image==null) style="margin-top:100px" @endif>
+                                <div class="blog_item_img">
+                                    <img class="card-img rounded-0" src="{{ asset ($item->image) }}" height="300px" alt="">
+                                    <a href="#" class="blog_item_date">
+                                        <h3>{{ Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
+                                        <p>{{ Carbon\Carbon::parse($item->created_at)->format('F') }}</p>
+                                    </a>
+                                </div>
+                                <div class="blog_details">
+                                    <a class="d-inline-block" href="{{url('/article/'.$item->slug)}}">
+                                        <h2>{{$item->title}}</h2>
+                                    </a>
+                                    <p>{{substr(strip_tags($item->description),0,160).'...'}}</p>
+                                    <ul class="blog-info-link">
+                                        <li><a href="#"><i class="far fa-user"></i> {{$generalSetting->about_name}}</a></li>
+                                        <li><a href="#"><i class="far fa-comments"></i> {{$item->comments->count()}} Comments</a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                            @endforeach
+                            <nav class="blog-pagination justify-content-center d-flex">
+                                {{$articles->links()}}
+                            </nav>
+                        @else
                         <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="{{ asset ($item->image) }}" height="300px" alt="">
-                                <a href="#" class="blog_item_date">
-                                    <h3>{{ Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
-                                    <p>{{ Carbon\Carbon::parse($item->created_at)->format('F') }}</p>
-                                </a>
-                            </div>
 
                             <div class="blog_details">
-                                <a class="d-inline-block" href="{{url('/article/'.$item->slug)}}">
-                                    <h2>{{$item->title}}</h2>
-                                </a>
-                                <p>{{substr(strip_tags($item->description),0,300).'...'}}</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="far fa-user"></i> {{$generalSetting->about_name}}</a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i> {{$item->comments->count()}} Comments</a></li>
-                                </ul>
+                                <p>No post in category "{{$categories->name}}"</p>
                             </div>
                         </article>
-                        @endforeach
-
-                        <nav class="blog-pagination justify-content-center d-flex">
-                            {{$articles->links()}}
-                        </nav>
-
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -72,14 +79,14 @@
                                 <li>
                                     <a href="{{url('article')}}" class="d-flex">
                                         <p>All Category </p>
-                                        <p>({{ $articles->count() }})</p>
+                                        <p>({{ $articleCount->count() }})</p>
                                     </a>
                                 </li>
                                 @foreach($category as $item)
                                 <li>
                                     <a href="{{url('/article/category/'.$item->slug)}}" class="d-flex">
                                         <p>{{$item->name}} </p>
-                                        <p>({{$articles->where('category_id',$item->id)->count()}})</p>
+                                        <p>({{$articleCount->where('category_id',$item->id)->count()}})</p>
                                     </a>
                                 </li>
                                 @endforeach

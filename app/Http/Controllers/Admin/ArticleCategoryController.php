@@ -24,6 +24,9 @@ class ArticleCategoryController extends Controller
     {
         $this->validate($request, ArticleCategory::rules());
 
+        $slug = str_slug($request->name).'-'.uniqid();
+        $request->request->add(['slug' => $slug]);
+
         ArticleCategory::create($request->all());
 
         return redirect()->route(ADMIN . '.articlecategory.index')->withSuccess(trans('app.success_store'));
@@ -46,6 +49,9 @@ class ArticleCategoryController extends Controller
         $this->validate($request, ArticleCategory::rules(true, $id));
 
         $item = ArticleCategory::findOrFail($id);
+
+        $slug = str_slug($request->name).'-'.uniqid();
+        $request->request->add(['slug' => $slug]);
 
         $item->update($request->all());
 

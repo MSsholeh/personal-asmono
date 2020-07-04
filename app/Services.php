@@ -4,23 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleCategory extends Model
+class Services extends Model
 {
-    protected $table = "article_category";
+    protected $table = "services";
 
     protected $fillable = [
-        'id','name','slug'
+        'id','icon','title','description','created_at','updated_at'
     ];
-
-    public function article()
-    {
-        return $this->hasMany('App\Article');
-    }
 
     public static function rules($update = false, $id = null)
     {
         $commun = [
-
         ];
 
         if ($update) {
