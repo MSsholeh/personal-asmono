@@ -5,7 +5,7 @@
 @section('body')
 
     <!-- banner part start-->
-    <section class="banner_part">
+    <section class="banner_part" style="background-image: url({{asset($about->about_photo)}})">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">

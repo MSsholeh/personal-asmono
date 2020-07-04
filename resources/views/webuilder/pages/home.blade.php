@@ -7,7 +7,7 @@
 @section('body')
 
 <!-- banner part start-->
-<section class="banner_part">
+<section class="banner_part" style="background-image: url({{asset($setting->about_photo)}})">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -165,7 +165,7 @@
 @endif
 
 <!-- Instagram part css start -->
-<section class="portfolio_part padding_bottom">
+<section class="portfolio_part section_padding padding_bottom">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
