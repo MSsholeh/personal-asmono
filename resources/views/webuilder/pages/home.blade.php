@@ -58,6 +58,7 @@
 </section>
 <!-- about part end-->
 
+@if($services->count() > 0)
 <!-- Service part start-->
 <section class="service_part section_padding">
     <div class="container">
@@ -90,6 +91,7 @@
     </div>
 </section>
 <!-- Service part end-->
+@endif
 
 @if($videos->count() > 0)
 <!-- podcast part css start -->
